@@ -1,4 +1,4 @@
-package com.example.mymovies.ui.detail
+package com.example.mymovies.ui.activities.detail
 
 import android.os.Build
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.buildSpannedString
 import com.bumptech.glide.Glide
 import com.example.mymovies.R
-import com.example.mymovies.data.MovieDb
+import com.example.mymovies.domain.MovieDb
 import com.example.mymovies.databinding.DetailActivityBinding
 import com.example.mymovies.util.appendInfo
 

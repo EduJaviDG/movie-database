@@ -1,6 +1,6 @@
-package com.example.mymovies.data
+package com.example.mymovies.data.datasources
 
-import com.example.mymovies.data.MovieDb
+import com.example.mymovies.domain.MovieDb
 import com.google.gson.annotations.SerializedName
 
 data class MovieDbResult(

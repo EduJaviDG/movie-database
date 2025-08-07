@@ -1,4 +1,4 @@
-package com.example.mymovies.ui.main
+package com.example.mymovies.ui.activities.main
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -14,17 +14,18 @@ import android.util.Log
 import android.view.Menu
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.mymovies.adapter.MovieAdapter
-import com.example.mymovies.adapter.MovieClickListener
+import com.example.mymovies.ui.adapters.MovieAdapter
+import com.example.mymovies.ui.adapters.MovieClickListener
 import com.example.mymovies.R
-import com.example.mymovies.api.MovieDbClient
-import com.example.mymovies.data.MovieDb
-import com.example.mymovies.data.PermissionRequester
+import com.example.mymovies.framework.data.datasources.api.MovieDbClient
+import com.example.mymovies.domain.MovieDb
+import com.example.mymovies.data.datasources.PermissionRequester
 import com.example.mymovies.databinding.ActivityMainBinding
-import com.example.mymovies.ui.detail.DetailActivity
+import com.example.mymovies.ui.activities.detail.DetailActivity
 import com.example.mymovies.util.openAppSettings
 import com.example.mymovies.util.toast
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -51,10 +52,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var locationRequest: LocationRequest
     private lateinit var movieAdapter: MovieAdapter
 
+    private val viewModel by viewModels<MainViewModel>()
+
     private val apiKey: String by lazy { getString(R.string.api_key) }
     private val accessToken: String by lazy { getString(R.string.access_token) }
-
-    private var popularMovies: List<MovieDb>? = null
 
     private val coarsePermission: PermissionRequester =
         PermissionRequester(this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -114,25 +115,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun callService() {
         lifecycleScope.launch {
-            val headers = mapOf<String, String>(
-                "accept" to "application/json",
-                "Authorization" to accessToken
-            )
-            val location = getLocationClient()
-            val language = getApiLanguage()
-            val response = MovieDbClient.service.getPopularMoviesWithApiKey(
-                apikey = apiKey,
-                language = language,
-                region = location ?: DEFAULT_REGION
-            )
-            popularMovies = response.results
+            viewModel.apikey = apiKey
+            viewModel.region = getLocationClient()
+            viewModel.language = getApiLanguage()
+            viewModel.getPopularMovies()
+
             showPopularMovies()
         }
     }
-
     private fun setPermissions() {
         coarsePermission.setInfoPermission(granted, rationale, denied)
         coarsePermission.runWithPermission()
+
     }
 
     @SuppressLint("MissingPermission")
@@ -185,7 +179,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 continuation.resume(getRegionFromLocation(lastLocation.result))
             }
-
         }
     }
 
@@ -225,12 +218,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showPopularMovies() {
-        if (popularMovies != null) {
-            movieAdapter.setListOfMovies(popularMovies)
-            showData()
-        } else {
-            Log.d("MainActivity", "ERROR LOADING DATA")
+        viewModel.movies.observe(this@MainActivity){ popularMovies ->
+            if (popularMovies != null) {
+                movieAdapter.setListOfMovies(popularMovies)
+                showData()
+            } else {
+                Log.d("MainActivity", "ERROR LOADING DATA")
+            }
+
         }
+
     }
 
     private fun showData(){

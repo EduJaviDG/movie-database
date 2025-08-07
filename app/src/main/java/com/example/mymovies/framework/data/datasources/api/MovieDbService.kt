@@ -1,10 +1,8 @@
-package com.example.mymovies.api
+package com.example.mymovies.framework.data.datasources.api
 
-import com.example.mymovies.data.MovieDbResult
-import retrofit2.Call
+import com.example.mymovies.data.datasources.MovieDbResult
 import retrofit2.http.GET
 import retrofit2.http.HeaderMap
-import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface MovieDbService {

@@ -1,4 +1,4 @@
-package com.example.mymovies.data
+package com.example.mymovies.data.datasources
 
 import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts

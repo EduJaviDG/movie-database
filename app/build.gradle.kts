@@ -52,6 +52,8 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:17.1.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation("androidx.activity:activity-ktx:1.9.0")
 
     //Testing
     testImplementation("junit:junit:4.13.2")
