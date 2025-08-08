@@ -1,4 +1,4 @@
-package com.example.mymovies.ui.adapters
+package com.example.mymovies.framework.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

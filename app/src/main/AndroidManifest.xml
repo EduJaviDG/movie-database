@@ -7,9 +7,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
-        android:allowBackup="true"
+        android:name=".framework.MyMoviesApp"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -17,7 +17,7 @@
         android:theme="@style/Theme.MyMovies"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activities.main.MainActivity"
+            android:name=".framework.ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.detail.DetailActivity"
+        <activity android:name=".framework.ui.detail.DetailActivity"
             android:exported="true"
-            android:parentActivityName=".ui.activities.main.MainActivity"
+            android:parentActivityName=".framework.ui.main.MainActivity"
             android:theme="@style/Theme.MyMovies.NoActionBar"/>
     </application>
 

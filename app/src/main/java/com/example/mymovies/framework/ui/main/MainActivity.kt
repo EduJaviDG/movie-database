@@ -1,4 +1,4 @@
-package com.example.mymovies.ui.activities.main
+package com.example.mymovies.framework.ui.main
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -18,14 +18,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.mymovies.ui.adapters.MovieAdapter
-import com.example.mymovies.ui.adapters.MovieClickListener
 import com.example.mymovies.R
-import com.example.mymovies.framework.data.datasources.api.MovieDbClient
 import com.example.mymovies.domain.MovieDb
 import com.example.mymovies.data.datasources.PermissionRequester
 import com.example.mymovies.databinding.ActivityMainBinding
-import com.example.mymovies.ui.activities.detail.DetailActivity
+import com.example.mymovies.framework.ui.detail.DetailActivity
 import com.example.mymovies.util.openAppSettings
 import com.example.mymovies.util.toast
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -37,6 +34,7 @@ import com.google.android.gms.tasks.CancellationToken
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.gms.tasks.OnTokenCanceledListener
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -45,6 +43,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.Locale
 import kotlin.coroutines.resume
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

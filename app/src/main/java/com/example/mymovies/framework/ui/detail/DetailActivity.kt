@@ -1,4 +1,4 @@
-package com.example.mymovies.ui.activities.detail
+package com.example.mymovies.framework.ui.detail
 
 import android.os.Build
 import android.os.Bundle

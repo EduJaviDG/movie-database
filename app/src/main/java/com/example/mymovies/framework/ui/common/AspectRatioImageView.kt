@@ -1,4 +1,4 @@
-package com.example.mymovies.ui.common
+package com.example.mymovies.framework.ui.common
 
 
 import android.content.Context
