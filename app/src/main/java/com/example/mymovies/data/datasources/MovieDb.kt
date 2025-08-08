@@ -1,4 +1,4 @@
-package com.example.mymovies.domain
+package com.example.mymovies.data.datasources
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -7,31 +7,31 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class MovieDb(
     @SerializedName("adult")
-    val adult: Boolean,
+    var adult: Boolean? = null,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    var backdropPath: String? = null,
     @SerializedName("genre_ids")
-    val genreIds: List<Int>,
+    var genreIds: List<Int>? = null,
     @SerializedName("id")
-    val id: Int,
+    var id: Int? = null,
     @SerializedName("original_language")
-    val originalLanguage: String,
+    var originalLanguage: String? = null,
     @SerializedName("original_title")
-    val originalTitle: String,
+    var originalTitle: String? = null,
     @SerializedName("overview")
-    val overview: String,
+    var overview: String? = null,
     @SerializedName("popularity")
-    val popularity: Double,
+    var popularity: Double? = null,
     @SerializedName("poster_path")
-    val posterPath: String,
+    var posterPath: String? = null,
     @SerializedName("release_date")
-    val releaseDate: String,
+    var releaseDate: String? = null,
     @SerializedName("title")
-    val title: String,
+    var title: String? = null,
     @SerializedName("video")
-    val video: Boolean,
+    var video: Boolean? = null,
     @SerializedName("vote_average")
-    val voteAverage: Double,
+    var voteAverage: Double? = null,
     @SerializedName("vote_count")
-    val voteCount: Int
+    var voteCount: Int? = null
 ): Parcelable

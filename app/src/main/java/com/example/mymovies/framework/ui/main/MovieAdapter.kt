@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mymovies.R
-import com.example.mymovies.domain.MovieDb
+import com.example.mymovies.data.datasources.MovieDb
 import com.example.mymovies.databinding.ItemMovieBinding
 
 class MovieAdapter(): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {

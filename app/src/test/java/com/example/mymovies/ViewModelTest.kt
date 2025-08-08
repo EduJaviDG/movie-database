@@ -3,13 +3,13 @@ package com.example.mymovies
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.mymovies.data.datasources.MovieDbResult
-import com.example.mymovies.domain.MovieDb
+import com.example.mymovies.data.datasources.MovieDb
 import com.example.mymovies.framework.ui.main.MainViewModel
 import com.example.mymovies.usecases.LoadPopularMovies
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -25,7 +25,9 @@ import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
 class ViewModelTest {
-    private val dispatcher = TestCoroutineDispatcher()
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private val dispatcher = UnconfinedTestDispatcher()
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
@@ -52,7 +54,6 @@ class ViewModelTest {
     @After
     fun tearDown(){
         Dispatchers.resetMain()
-        dispatcher.cleanupTestCoroutines()
 
     }
 

@@ -1,15 +1,14 @@
 package com.example.mymovies.data.datasources
 
-import com.example.mymovies.domain.MovieDb
 import com.google.gson.annotations.SerializedName
 
 data class MovieDbResult(
     @SerializedName("page")
-    val page: Int,
+    var page: Int? = null,
     @SerializedName("results")
-    val results: List<MovieDb>,
+    var results: List<MovieDb>? = null,
     @SerializedName("total_pages")
-    val totalPages: Int,
+    var totalPages: Int? = null,
     @SerializedName("total_results")
-    val totalResults: Int
+    var totalResults: Int? = null
 )
