@@ -7,12 +7,13 @@ import com.bumptech.glide.Glide
 import com.example.mymovies.R
 import com.example.mymovies.data.datasources.MovieDb
 import com.example.mymovies.databinding.ItemMovieBinding
+import com.example.mymovies.domain.Movie
 
 class MovieAdapter(): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
-    private var movieList: List<MovieDb>? = null
+    private var movieList: List<Movie>? = null
     private var movieListener: MovieClickListener? = null
 
-    fun setListOfMovies(list: List<MovieDb>?){
+    fun setListOfMovies(list: List<Movie>?){
         movieList = list
 
         notifyItemRangeInserted(0, movieList?.size ?: 0)
@@ -45,7 +46,7 @@ class MovieAdapter(): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
             private const val baseImageUrl = "https://image.tmdb.org/t/p/w185/"
         }
 
-        fun bind(item: MovieDb?, listener: MovieClickListener?){
+        fun bind(item: Movie?, listener: MovieClickListener?){
             binding.tvTitleMovie.text = item?.title
             Glide.with(itemView)
                 .load(baseImageUrl + item?.posterPath)
@@ -60,5 +61,5 @@ class MovieAdapter(): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 }
 
 interface MovieClickListener{
-    fun onClickMovie(item: MovieDb?)
+    fun onClickMovie(item: Movie?)
 }

@@ -22,6 +22,7 @@ import com.example.mymovies.R
 import com.example.mymovies.data.datasources.MovieDb
 import com.example.mymovies.data.datasources.PermissionRequester
 import com.example.mymovies.databinding.ActivityMainBinding
+import com.example.mymovies.domain.Movie
 import com.example.mymovies.framework.ui.detail.DetailActivity
 import com.example.mymovies.util.openAppSettings
 import com.example.mymovies.util.toast
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     private val denied: () -> Unit = { toast(getString(R.string.message_toast)) }
 
     private val movieListener = object : MovieClickListener {
-        override fun onClickMovie(item: MovieDb?) {
+        override fun onClickMovie(item: Movie?) {
             navigateToDetailActivity(item)
         }
     }
@@ -241,7 +242,7 @@ class MainActivity : AppCompatActivity() {
         binding.swRefresh.isRefreshing = false
     }
 
-    private fun navigateToDetailActivity(movie: MovieDb?) {
+    private fun navigateToDetailActivity(movie: Movie?) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(DetailActivity.EXTRA_MOVIE, movie)
 

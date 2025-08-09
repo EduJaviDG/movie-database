@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.mymovies.R
 import com.example.mymovies.data.datasources.MovieDb
 import com.example.mymovies.databinding.DetailActivityBinding
+import com.example.mymovies.domain.Movie
 import com.example.mymovies.util.appendInfo
 
 
@@ -20,7 +21,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: DetailActivityBinding
-    private var movie: MovieDb? = null
+    private var movie: Movie? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         movie = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra(EXTRA_MOVIE, MovieDb::class.java)
+            intent.getParcelableExtra(EXTRA_MOVIE, Movie::class.java)
         } else {
             intent.getParcelableExtra(EXTRA_MOVIE)
         }

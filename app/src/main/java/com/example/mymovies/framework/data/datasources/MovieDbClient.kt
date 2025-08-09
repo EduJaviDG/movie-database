@@ -1,4 +1,4 @@
-package com.example.mymovies.framework.data.datasources.api
+package com.example.mymovies.framework.data.datasources
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
