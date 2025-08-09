@@ -3,9 +3,10 @@ package com.example.mymovies.framework.data.datasources.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object MovieDbClient {
-
-    private const val baseUrl = "https://api.themoviedb.org/3/movie/"
+class MovieDbClient() {
+    companion object{
+        private const val baseUrl = "https://api.themoviedb.org/3/movie/"
+    }
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
